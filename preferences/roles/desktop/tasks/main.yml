@@ -60,7 +60,15 @@
 - name: install rxvt-unicode
   apt: name=rxvt-unicode
   sudo: yes
-  tags: [x11, terminal]
+  tags: [x11, util]
+
+- name: install x11 utils
+  apt: name={{ item }}
+  sudo: yes
+  tags: [x11, util]
+  with_items:
+    - gmrun
+    - xclip
 
 - name: install Xresource to user home directory
   template: src=Xresources dest={{ ansible_env.HOME }}/.Xresources
@@ -130,4 +138,17 @@
   template: src=conky/autostart.desktop dest={{ ansible_env.HOME }}/.config/autostart/conky.desktop
   when: autostart|success
   tags: [x11, autostart, conky]
+    
+###############################################################################
+#
+# XIM
+#
+###############################################################################
 
+- name: install fcitx input method
+  apt: name={{ item }}
+  sudo: yes
+  tags: [x11, xim]
+  with_items:
+    - fcitx
+    - fcitx-googlepinyin

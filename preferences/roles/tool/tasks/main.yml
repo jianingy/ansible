@@ -1,6 +1,7 @@
 ---
 - name: install commandline tools
   apt: name={{ item }}
+  sudo: yes
   with_items:
     - bridge-utils
     - curl
@@ -19,6 +20,10 @@
     - vlan
     - vcsh
     - whois
+    - vim
+    - mpd
+  tags: [tools]
 
 - name: sync my tools
   synchronize: src=bin dest=~/local recursive=yes
+  tags: [tools]

@@ -1,6 +1,7 @@
 ---
 - name: install devel packages
   apt: name={{ item }}
+  sudo: yes
   with_items:
     - git
     - bzr
