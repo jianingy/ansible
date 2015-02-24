@@ -1,0 +1,16 @@
+---
+- name: download ghostblog
+  get_url: url=https://ghost.org/zip/ghost-0.5.8.zip dest=/tmp/ghost-current.zip sha256sum=34ed02657babb83d2b0ee0f8b071b8ba379cf821ad74a909017ece5566f061a3
+  tags: [ghostblog]
+
+- name: make ghostblog directory
+  file: dest="{{ blog_root }}" state=directory
+  tags: [ghostblog]
+
+- name: unarchive ghostblog
+  unarchive: src=/tmp/ghost-current.zip dest={{ blog_root }} copy=no
+  tags: [ghostblog]
+
+- name: install npm pacakges
+  npm: path={{ blog_root }} production=yes global=no
+  tags: [ghostblog]

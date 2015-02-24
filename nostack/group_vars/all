@@ -1,0 +1,2 @@
+service_repo: /etc/sv
+service_root: /service

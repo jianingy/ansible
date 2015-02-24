@@ -1,0 +1,133 @@
+---
+###############################################################################
+#
+# autostart
+#
+###############################################################################
+- name: make autostart configuration directory
+  file: dest={{ ansible_env.HOME }}/.config/autostart state=directory
+  register: autostart
+  tags: [x11, autostart]
+
+###############################################################################
+#
+# Desktop Management
+#
+###############################################################################
+- name: install xmonad
+  apt: name=xmonad
+  sudo: yes
+  tags: [x11, xmonad]
+
+- name: install gnome-panel
+  apt: name=gnome-panel
+  sudo: yes
+  tags: [x11]
+
+- name: install xsession item
+  template: src=xsessions/gnome-xmonad.desktop dest=/usr/share/xsessions/gnome-xmonad.desktop
+  sudo: yes
+  tags: [x11, xmonad]
+
+- name: install gnome session item
+  template: src=gnome-sessions/xmonad.session dest=/usr/share/gnome-session/sessions/xmonad.session
+  sudo: yes
+  tags: [x11, xmonad]
+
+- name: install xmonad application
+  template: src=applications/xmonad.desktop dest=/usr/share/applications/xmonad.desktop
+  sudo: yes
+  tags: [x11, xmonad]
+
+- name: make xmonad configuration directory
+  file: dest={{ ansible_env.HOME }}/.xmonad state=directory
+  tags: [x11, xmonad]
+
+- name: install xmonad configuration to user home
+  template: src=xmonad/xmonad.hs dest={{ ansible_env.HOME }}/.xmonad/xmonad.hs
+  tags: [x11, xmonad]
+
+- name: compile xmonad
+  command: xmonad --recompile
+  tags: [x11, xmonad]
+
+
+###############################################################################
+#
+# X11 Util
+#
+###############################################################################
+- name: install rxvt-unicode
+  apt: name=rxvt-unicode
+  sudo: yes
+  tags: [x11, terminal]
+
+- name: install Xresource to user home directory
+  template: src=Xresources dest={{ ansible_env.HOME }}/.Xresources
+  tags: [x11]
+    
+###############################################################################
+#
+# X11 fonts
+#
+###############################################################################
+
+- name: make fontconfig directory
+  file: dest={{ ansible_env.HOME }}/.config/fontconfig state=directory
+  tags: [x11, font]
+
+- name: install fontconfig to user home directory
+  template: src=fontconfig/fonts.conf dest={{ ansible_env.HOME }}/.config/fontconfig/fonts.conf
+  tags: [x11, font]
+
+- name: copy fonts to remote
+  synchronize: src=/home/jianingy/.fonts/ dest={{ ansible_env.HOME }}/.fonts/
+  register: copy_x11_fonts
+  tags: [x11, font]
+
+- name: refresh font cache
+  shell: fc-cache -frv; exit 0
+  when: copy_x11_fonts|success
+  tags: [x11, font]
+    
+###############################################################################
+#
+# Effect
+#
+###############################################################################
+- name: install compton
+  apt: name=compton
+  sudo: yes
+  tags: [x11, compton]
+
+- name: install compton configuration to user home
+  template: src=conky/conkyrc dest={{ ansible_env.HOME }}/.compton.conf
+  tags: [x11, compton]
+
+- name: install compton autostart
+  template: src=compton/autostart.desktop dest={{ ansible_env.HOME }}/.config/autostart/compton.desktop
+  when: autostart|success
+  tags: [x11, autostart, compton]
+
+- name: install conky
+  apt: name=conky
+  sudo: yes
+  tags: [x11, conky]
+
+- name: make conky configuration directory
+  file: dest={{ ansible_env.HOME }}/.config/conky state=directory
+  tags: [x11, conky]
+
+- name: install conky configuration to user home
+  template: src=conky/conkyrc dest={{ ansible_env.HOME }}/.conkyrc
+  tags: [x11, conky]
+
+- name: install conky configuration to user home
+  template: src=conky/draw_bg.lua dest={{ ansible_env.HOME }}/.config/conky/draw_bg.lua
+  tags: [x11, conky]
+    
+- name: install conky autostart
+  template: src=conky/autostart.desktop dest={{ ansible_env.HOME }}/.config/autostart/conky.desktop
+  when: autostart|success
+  tags: [x11, autostart, conky]
+

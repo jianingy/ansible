@@ -1,0 +1,6 @@
+[haproxy]
+kiwi.nostack.in:55555
+blog.nostack.in:443
+
+[devbox]
+dev[1:4]

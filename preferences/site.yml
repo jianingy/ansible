@@ -1,0 +1,13 @@
+- name: apply my basic configuration and tools to all nodes
+  hosts: all
+
+  roles:
+    - configuration
+    - tool
+
+- name: desktop
+  hosts: desktop
+  roles:
+    - desktop
+    - multipkg
+    - libvirt

@@ -1,0 +1,276 @@
+!******************************************************************************
+!
+! Xft
+!
+!******************************************************************************
+Xft.dpi:               96
+Xft.rgba:              rgb
+Xft.hinting:           true
+! enable BCI no need to use autohint
+Xft.autohint:          false
+Xft.hintstyle:         hintmedium
+Xft.antialias:         true
+Xft.rh_prefer_bitmaps: true
+Xft.lcdfilter:         lcddefault
+
+!******************************************************************************
+!
+! XCursor
+!
+!******************************************************************************
+
+Xcursor.theme: vanilla-dmz-aa
+Xcursor.size: 32
+
+!******************************************************************************
+!
+! Colors
+!
+!******************************************************************************
+
+
+!******************************************************************************
+! Emacs
+!Emacs.backend: xft
+Emacs.geometry: 120x36+48+48
+Emacs.useXIM: true
+!Emacs*font:-gohu-gohufont-medium-r-normal-*-14-100-100-100-c-80-iso8859-1
+!Emacs*boldFont:-gohu-gohufont-medium-r-normal-*-14-100-100-100-c-80-iso8859-1
+
+!******************************************************************************
+!
+! dzen2
+!
+!******************************************************************************
+dzen2.font:       xft:Consolas:size=7
+dzen2.foreground: #f2f2f5
+dzen2.background: #231f20
+
+!******************************************************************************
+!
+!Xterm
+!
+!******************************************************************************
+xterm*title: xterm
+!xterm*font: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1
+!xterm*boldFont: -gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1
+!xterm*font: -nil-profont-medium-r-normal--12-120-72-72-c-60-iso8859-1
+!xterm*boldFont: -nil-profont-medium-r-normal--12-120-72-72-c-60-iso8859-1
+xterm*faceName: Monofur
+xterm*faceNameDoublesize: Hannotate SC:style=Regular
+xterm*faceSize: 11
+xterm*boldMode: false
+xterm*cutNewline: false
+xterm*on4Clicks: group
+xterm*on5Clicks: page
+xterm*internalBorder: 8
+xterm*customization: color
+xterm*metaSendsEscape: true
+xterm*colorBDMode: false
+xterm*cursorBlink: false
+xterm*dynamiccolors: true
+xterm*utf8: 1
+xterm*loginShell: false
+xterm*jumpScroll: true
+xterm*multiScroll: true
+xterm*saveLines: 4096
+xterm*scrollBar: false
+xterm*xftAntialias: true
+
+xterm*.foreground: #00bb00
+xterm*.background: #001100
+xterm*.cursorColor: #00bb00
+
+xterm*.color0: #001100
+xterm*.color1: #007700
+xterm*.color2: #00bb00
+xterm*.color3: #007700
+xterm*.color4: #009900
+xterm*.color5: #00bb00
+xterm*.color6: #005500
+xterm*.color7: #00bb00
+
+xterm*.color8: #007700
+xterm*.color9: #007700
+xterm*.color10: #00bb00
+xterm*.color11: #007700
+xterm*.color12: #009900
+xterm*.color13: #00bb00
+xterm*.color14: #005500
+xterm*.color15: #00ff00
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+xterm*.color16: #009900
+xterm*.color17: #005500
+xterm*.color18: #003300
+xterm*.color19: #005500
+xterm*.color20: #009900
+xterm*.color21: #00dd00
+
+
+!******************************************************************************
+!
+! URxvt
+!
+!******************************************************************************
+! 24 for pesudo transparent, 32 for real transparent
+URxvt.depth:				 32
+URxvt.saveLines:			 1536
+URxvt.geometry:				 80x24
+URxvt.termName:				 xterm-256color
+URxvt.loginShell:			 false
+URxvt.urgentOnBell:          true
+
+! Transparent
+URxvt.transparent:     False
+! only for 24bits color pesudo transparent
+!URxvt.inheritPixmap:    True
+!URxvt.shading:          5
+URxvt.tintColor:         #333333
+URxvt.fading:            5
+URxvt.fadeColor:         [0]black
+URxvt.cursorUnderline:   false
+
+! Scrollbar
+URxvt.scrollBar:          False
+URxvt.scrollBar_right:    yes
+URxvt.scrollBar_floating: False
+URxvt.scrollstyle:        Next
+
+! http://lifegoo.pluskid.org/wiki/XTerminal.html#urxvt
+! push content in 'screen' / 'tmux' into urxvt scroll buffer
+URxvt.secondaryScroll: true
+
+! do not scroll to bottom when there is output, but do scroll to bottom on key press
+URxvt.scrollTtyOutput: False
+URxvt.scrollTtyKeypress: True
+URxvt.scrollWithBuffer: True
+
+
+! Behaviour URxvt.visualBell:        false
+!---- ctrl+F12 --> clean screen and scroll-bar
+URxvt.keysym.Control-F12: command:\033c
+!---- setting remote-clipboard
+!URxvt.remote-selection.store: rsh ruth ’cat >/tmp/distributed-selection’
+!URxvt.remote-selection.fetch: rsh ruth ’cat /tmp/distributed-selection’
+!de-iconify (map) on receipt of a bell character, may cause damage screen
+URxvt.mapAlert:           true
+URxvt.print-pipe:         cat > $(echo urxvt.dump.`date +'%Y%M%d%H%m%S'`)
+
+! Font
+URxvt.font:xft:Monofur:size=11:Bold,xft:Heiti SC:size=11:Regular
+URxvt.boldFont:xft:Monofur:size=11:Bold,xft:Heiti SC:size=11:Regular
+
+!
+!URxvt.font:xft:Monofur:size=12:Bold,xft:Heiti SC:size=12:Regular
+!URxvt.boldFont:xft:Monofur:size=12:Bold,xft:Heiti SC:size=12:Regular
+!URxvt*font:-gohu-gohufont-medium-r-normal-*-14-100-100-100-c-80-iso8859-1,xft:SimSun:pixelsize=14:Regular
+!URxvt*boldFont:-gohu-gohufont-medium-r-normal-*-14-100-100-100-c-80-iso8859-1,xft:SimSun:pixelsize=14:Regular
+!URxvt*font:-gohu-gohufont-medium-r-normal-*-14-100-100-100-c-80-iso8859-1,-wenquanyi-wenquanyi bitmap song-medium-r-normal-*-15-150-75-75-p-80-iso10646-1
+!URxvt*boldFont:-gohu-gohufont-medium-r-normal-*-14-100-100-100-c-80-iso8859-1,-wenquanyi-wenquanyi bitmap song-medium-r-normal-*-15-150-75-75-p-80-iso10646-1
+! IM
+URxvt.preeditType: Root
+URxvt.inputMethod: fcitx
+!URxvt.preeditType: OverTheSpot
+!Urxvt.imFont: -adobe-times-bold-i-normal--12-120-75-75-p-68-iso10646-1
+
+
+!UI
+URxvt.internalBorder:8
+URxvt.externalBorder:0
+
+
+! Extensions
+!---- perl extensions: enabled by default has:
+!   selection,option-popup,selection-popup,searchable-scrollback,readline
+! for more: ls /usr/lib/urxvt/perl/
+URxvt.perl-lib:           /usr/lib/urxvt/perl
+URxvt.perl-ext-common:    default,matcher,clipboard,confirm-paste
+URxvt.matcher.launcher:   x-www-browser
+URxvt.matcher.button:     1
+URxvt.matcher.pattern.1:  \\bwww\\.[\\w-]+\\.[\\w./?&@#-=]*[\\w/-]
+URxvt.iconFile:           /usr/share/icons/gnome/scalable/apps/utilities-terminal-symbolic.svg
+URxvt.keysym.Mod4-v: perl:clipboard:paste
+URxvt.iso14755: False
+!
+! URxvt*.foreground: #c5c8c6
+! URxvt*.background: #1d1f21
+! URxvt*.cursorColor: #c5c8c6
+! !
+! URxvt*.color0: #1d1f21
+! URxvt*.color1: #cc6666
+! URxvt*.color2: #b5bd68
+! URxvt*.color3: #f0c674
+! URxvt*.color4: #81a2be
+! URxvt*.color5: #b294bb
+! URxvt*.color6: #8abeb7
+! URxvt*.color7: #c5c8c6
+! !
+! URxvt*.color8: #969896
+! URxvt*.color9: #cc6666
+! URxvt*.color10: #b5bd68
+! URxvt*.color11: #f0c674
+! URxvt*.color12: #81a2be
+! URxvt*.color13: #b294bb
+! URxvt*.color14: #8abeb7
+! URxvt*.color15: #ffffff
+! !
+! ! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! ! use 'shell' template to set these if necessary
+! URxvt*.color16: #de935f
+! URxvt*.color17: #a3685a
+! URxvt*.color18: #282a2e
+! URxvt*.color19: #373b41
+! URxvt*.color20: #b4b7b4
+! URxvt*.color21: #e0e0e0
+!
+
+!! monokai theme
+!URxvt*background: #272822
+!URxvt*foreground: #d8d8d2
+!URxvt*cursorColor: #d0d0d0
+!!
+!URxvt*color0: #101010
+!URxvt*color1: #960050
+!URxvt*color2: #66aa11
+!URxvt*color3: #c47f2c
+!URxvt*color4: #30309b
+!URxvt*color5: #7e40a5
+!URxvt*color6: #3579a8
+!URxvt*color7: #9999aa
+!URxvt*color8: #303030
+!URxvt*color9: #ff0090
+!URxvt*color10: #80ff00
+!URxvt*color11: #ffba68
+!URxvt*color12: #5f5fee
+!URxvt*color13: #bb88dd
+!URxvt*color14: #4eb4fa
+!URxvt*color15: #d0d0d0
+
+!! Monokai
+!! https://github.com/oneKelvinSmith/monokai/blob/master/monokai.palette
+URxvt*background: #272822
+URxvt*foreground: #d8d8d2
+URxvt*cursorColor: #d8d8d2
+
+URxvt*color0: #49483E
+URxvt*color1: #F92672
+URxvt*color2: #A6E22E
+URxvt*color3: #FD971F
+URxvt*color4: #66D9EF
+URxvt*color5: #AE81FF
+URxvt*color6: #A1EFE4
+URxvt*color7: #D8D8D2
+
+URxvt*color8: #75715E
+URxvt*color9: #FC5C94
+URxvt*color10: #C1F161
+URxvt*color11: #FEB257
+URxvt*color12: #8DE6F7
+URxvt*color13: #C2A1FF
+URxvt*color14: #BBF7EF
+URxvt*color15: #F8F8F0
+
+
+! vim: ts=4 sw=4 et ai

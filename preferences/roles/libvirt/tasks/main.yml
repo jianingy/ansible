@@ -1,0 +1,18 @@
+---
+- name: install commandline tools
+  apt: name={{ item }}
+  with_items:
+    - qemu-system
+    - qemu-kvm
+    - virtinst
+    - virt-manager
+    - spice-client
+    - python-spice-client-gtk
+  sudo: yes
+  tags: [libvirt]
+
+- name: enable nested kvm
+  lineinfile: dest=/etc/modprobe.d/kvm.conf line="options kvm_intel nested=1" create=yes
+  sudo: yes
+  tags: [libvirt]
+

@@ -1,0 +1,36 @@
+[core]
+    pager = less -FRSX
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+[user]
+    name = Jianing Yang
+    email = jianingy.yang@gmail.com
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+    ui = auto
+
+[alias]
+    ci = commit
+    co = checkout
+    br = branch
+    dc = dcommit
+    st = status
+    up = pull origin master
+    pu = push origin master
+
+[rerere]
+    enabled = true
+
+[i18n]
+    commitEncoding = utf-8
+    logOutputEncoding = utf-8
+
+[credential]
+	helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
+
+#[http]
+#	proxy = socks5://socks.ustack.com
+

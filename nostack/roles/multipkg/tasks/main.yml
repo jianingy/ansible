@@ -1,0 +1,12 @@
+---
+- name: download multipkg sources
+  git: repo=https://github.com/jianingy/multipkg dest=/usr/src/multipkg
+  tags: [multipkg]
+
+- name: build multipkg package
+  shell: ./build.sh chdir=/usr/src/multipkg
+  tags: [multipkg]
+
+- name: install multipkg package
+  shell: dpkg -i ./multipkg_1.3.7*.deb chdir=/usr/src/multipkg
+  tags: [multipkg]

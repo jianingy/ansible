@@ -1,0 +1,24 @@
+---
+- name: install commandline tools
+  apt: name={{ item }}
+  with_items:
+    - bridge-utils
+    - curl
+    - dstat
+    - fabric
+    - geary
+    - htop
+    - mr
+    - mu4e
+    - nfs-common
+    - p7zip-full
+    - suckless-tools
+    - sysstat
+    - tmux
+    - uml-utilities
+    - vlan
+    - vcsh
+    - whois
+
+- name: sync my tools
+  synchronize: src=bin dest=~/local recursive=yes

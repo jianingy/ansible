@@ -1,0 +1,25 @@
+---
+- name: install git
+  apt: name=git
+  sudo: yes
+  tags: [multipkg]
+
+- name: make source directory
+  file: dest=/usr/src/multipkg state=directory
+  sudo: yes
+  tags: [multipkg]
+
+- name: download multipkg sources
+  git: repo=https://github.com/jianingy/multipkg dest=/usr/src/multipkg
+  sudo: yes
+  tags: [multipkg]
+
+- name: build multipkg package
+  shell: ./build.sh chdir=/usr/src/multipkg
+  sudo: yes
+  tags: [multipkg]
+
+- name: install multipkg package
+  shell: dpkg -i ./multipkg_1.3.7*.deb chdir=/usr/src/multipkg
+  sudo: yes
+  tags: [multipkg]

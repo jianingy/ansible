@@ -1,0 +1,14 @@
+ [34;1m        _
+        / \      _-'
+      _/|  \-''- _ /       [33;1ms e r v e r    o f    n o s t a c k . i n[34;1m
+ __-' { |          \
+     /              \        
+     /       "o.  |o }     [37;0mhostname:[37;0m [32;1m{{ ansible_hostname }}[34;1m
+     |            \ ;           [37;0mip4:[37;0m [32;1m{{ ansible_all_ipv4_addresses | first }}[34;1m
+                   ',           
+        \_         __\       [37;0mkernel:[37;0m [32;1m{{ ansible_kernel }}[34;1m
+          ''-_    \.//       [37;0msystem:[37;0m [32;1m{{ ansible_distribution }} {{ansible_distribution_version }}[34;1m
+            / '-____'   
+           /
+         _'
+       _-'[37;0m

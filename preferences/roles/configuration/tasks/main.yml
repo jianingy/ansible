@@ -1,0 +1,6 @@
+---
+- name: Configure tmux 
+  synchronize: src=tmux.conf dest=~/.tmux.conf
+
+- name: Configure git
+  synchronize: src=gitconfig dest=~/.gitconfig

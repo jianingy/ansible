@@ -1,0 +1,15 @@
+---
+- name: install devel packages
+  apt: name={{ item }}
+  with_items:
+    - git
+    - bzr
+    - subversion
+    - cvs
+    - mercurial
+    - vim
+    - emacs24
+    - ipython
+    - virtualenvwrapper
+    - python-ipdb
+    - python-flake8

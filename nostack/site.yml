@@ -1,0 +1,17 @@
+- name: apply common configurations
+  hosts: all
+  roles:
+    - common
+
+- name: install moinwiki
+  hosts: dev3
+  vars:
+    wiki_root: /opt/wiki.nostack.in
+    wiki_name: wiki.nostack.in
+    wiki_bind: 0.0.0.0:10000
+    wiki_owner: nobody
+    blog_root: /opt/blog.nostack.in
+  roles:
+    - moinwiki 
+    - ghostblog
+    - multipkg

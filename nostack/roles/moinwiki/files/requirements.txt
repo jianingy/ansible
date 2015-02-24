@@ -1,0 +1,5 @@
+Werkzeug==0.10
+gunicorn==19.2.0
+html5lib==0.999
+moin==1.9.8
+python-dateutil==2.4.0

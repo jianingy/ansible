@@ -1,0 +1,38 @@
+---
+- name: install moinwiki
+  pip: virtualenv={{ wiki_root }} name=moin
+  tags: [moinwiki, moinwiki.prepare]
+
+- name: install moinwiki requirements file
+  copy: src=requirements.txt dest="{{ wiki_root }}/requirements.txt"
+  tags: [moinwiki, moinwiki.prepare]
+
+- name: install gunicorn
+  pip: virtualenv={{ wiki_root }} requirements="{{ wiki_root }}/requirements.txt"
+  tags: [moinwiki, moinwiki.prepare]
+
+- name: create wiki directory
+  shell: "rsync -a --include 'data/***' --include 'underlay/***' --exclude '*' . {{ wiki_root }}/wiki"
+  args:
+    chdir: "{{ wiki_root }}/share/moin/"
+  tags: [moinwiki, moinwiki.setup]
+
+- name: install moinwiki config
+  synchronize: src=wikiconfig.py dest={{ wiki_root }}/wiki/wikiconfig.py
+  tags: [moinwiki, moinwiki.setup]
+
+- name: install moinwiki wsgi module
+  synchronize: src=wsgi.py dest={{ wiki_root }}/wiki/wsgi.py
+  tags: [moinwiki, moinwiki.setup]
+
+- name: set moinwiki service owner
+  file: dest={{ wiki_root }} owner={{ wiki_owner }} recurse=yes
+  tags: [moinwiki, moinwiki.setup]
+
+- name: create moinwiki service directory and log directory
+  file: dest="{{ service_repo }}/{{ wiki_name }}/log" state=directory
+  tags: [moinwiki, moinwiki.service]
+
+- name: create moinwiki service run file
+  template: src=run.j2 dest="{{ service_repo }}/{{ wiki_name }}/run" mode=0755
+  tags: [moinwiki, moinwiki.service]
