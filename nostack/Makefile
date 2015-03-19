@@ -1,2 +1,2 @@
-base: base.yml
-	ansible-playbook -i hosts -e "targets=$(TARGET)" $<
+init: init.yml
+	ansible-playbook -K -i hosts -e "target=$(TARGET)" $<

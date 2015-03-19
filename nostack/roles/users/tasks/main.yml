@@ -7,11 +7,11 @@
   tags: [users]
 
 - name: sync users authorized_keys
-  authorized_key: user="{{ item.key }}" key="{{ item.value.sshkey }}"
+  authorized_key: user="{{ item.key }}" key="{{ item.value.sshkey }}" manage_dir=yes
   with_dict: users
   tags: [users]
 
 - name: sync users home configurations
-  synchronize: src=users/{{ item.key }}/home/ dest={{ ansible_env.HOME }}/ dirs=yes 
+  synchronize: src=users/{{ item.key }}/home/ dest=/home/{{ item.key }}/ dirs=yes rsync_opts="--no-perms"
   with_dict: users
   tags: [users]
