@@ -1,0 +1,17 @@
+---
+
+- name: add users
+  user: name="{{ item.key }}" shell="{{ item.value.shell | default("/bin/bash") }}" groups="{{ item.value.groups | default([]) | join(",") }}" password="{{ item.value.password }}"
+  sudo: yes
+  with_dict: users
+  tags: [users]
+
+- name: sync users authorized_keys
+  authorized_key: user="{{ item.key }}" key="{{ item.value.sshkey }}"
+  with_dict: users
+  tags: [users]
+
+- name: sync users home configurations
+  synchronize: src=users/{{ item.key }}/home/ dest={{ ansible_env.HOME }}/ dirs=yes 
+  with_dict: users
+  tags: [users]

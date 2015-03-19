@@ -3,4 +3,6 @@ kiwi.nostack.in:55555
 blog.nostack.in:443
 
 [devbox]
+c[1:4]
+u[1:4]
 dev[1:4]

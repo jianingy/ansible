@@ -1,5 +1,5 @@
 - name: apply my basic configuration and tools to all nodes
-  hosts: all
+  hosts: '{{ target }}'
 
   roles:
     - configuration

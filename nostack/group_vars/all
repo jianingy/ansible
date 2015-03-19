@@ -1,2 +1,11 @@
+---
 service_repo: /etc/sv
 service_root: /service
+
+users:
+  jianingy:
+    name: Jianing Yang
+    groups:
+      - sudo
+    password: "$6$9UmBjBVx$w4c0A6FK7V.ysxDADEy4MS4ZxvOIgUAAL1W6xGG0.KtrpX/oMFb3SOYB3iZkTbd2dElrvXQ3liXPl3hw4RBdG0"
+    sshkey: "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA0LdN0KZGLkYYD8hMg5/i/o8fz5f9kwCtsAcUcqiMqLwBJ9CFg1EN5nC1KLHqLSbKSrqfdzym5ACzpv0A8kbFL1g91FmKZAPFRioY8x9DDrfxsMMJspdXKdQacAQUHcjEjJ/IUaP2h3FCJuhNYci7g53mHsgnjnYozIPcMqCfhw4xZtUyPQLDEwlilHOyOuPpVjjrS6HvN3BIkSiW2mBtO3QB/aQpHrvCqDywd+iCdAos5cczlc4D/FPNCwGUkH+EYGCwMEasstRavXp8NQxh7clhzrety83t5qLkwk3pPq10eC2wwClAPRJaHUoTb4r3QzkJ6Q3cZjPxOfPvs/wuFQ== jianingy@thinkpad"

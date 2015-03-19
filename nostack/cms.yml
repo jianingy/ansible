@@ -1,10 +1,5 @@
-- name: apply common configurations
-  hosts: all
-  roles:
-    - common
-
-- name: install moinwiki
-  hosts: dev3
+- name: install moinwiki / ghostblog
+  hosts: '{{ target }}'
   vars:
     wiki_root: /opt/wiki.nostack.in
     wiki_name: wiki.nostack.in
@@ -14,4 +9,3 @@
   roles:
     - moinwiki 
     - ghostblog
-    - multipkg

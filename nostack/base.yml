@@ -1,0 +1,6 @@
+- name: apply base configurations
+  hosts: '{{ target }}'
+  roles:
+    - base
+    - users
+

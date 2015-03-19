@@ -1,0 +1,7 @@
+- name: install zsh
+  yum: name=zsh
+  when: ansible_pkg_mgr == 'yum'
+
+- name: install zsh
+  apt: name=zsh
+  when: ansible_pkg_mgr == 'apt'
