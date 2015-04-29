@@ -1,0 +1,5 @@
+- name: percona-mysql
+  hosts: '{{ target }}'
+  roles:
+    - percona-mysql
+

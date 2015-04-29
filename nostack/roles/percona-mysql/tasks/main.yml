@@ -1,0 +1,27 @@
+---
+- name: install percona repo
+  yum: name=http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
+  tags: [percona-mysql]
+
+- name: disable repo by default
+  replace: dest=/etc/yum.repos.d/percona-release.repo regexp='^enabled\s*=\s*1$' replace='enabled = 0' backup=no
+  tags: [percona-mysql]
+
+
+- name: install mysql server
+  yum: name=Percona-Server-server-56 enablerepo=percona-release-{{ ansible_userspace_architecture }},percona-release-noarch
+  tags: [percona-mysql]
+  register: percona-server-installed
+
+- name: install mysql client
+  yum: name=Percona-Server-client-56 enablerepo=percona-release-{{ ansible_userspace_architecture }},percona-release-noarch
+  tags: [percona-mysql]
+
+- name: install xtrabackup
+  yum: name=percona-xtrabackup enablerepo=percona-release-{{ ansible_userspace_architecture }},percona-release-noarch
+  tags: [percona-mysql]
+
+- name: start percona server
+  service: name=mysql enabled=yes
+  tags: [percona-mysql]
+ 

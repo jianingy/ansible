@@ -3,3 +3,10 @@
   template: src=motd dest=/etc/motd
   sudo: yes
   tags: motd
+
+- name: install base tools
+  apt: name={{ item }}
+  with_items:
+    - rsync
+    - sudo
+  when: ansible_pkg_mgr == 'apt'

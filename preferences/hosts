@@ -1,5 +1,7 @@
 [devbox]
 dev[1:4]
+117.121.25.225
 
 [desktop]
 10.32.0.172
+localhost
